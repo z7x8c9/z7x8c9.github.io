@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Отзывы - Кафе 3 Пескаря</title>
+    <link rel="stylesheet" href="styles.css">
+    <script>
+        function addReview() {
+            const reviewText = document.getElementById("reviewText").value;
+            if (reviewText.trim() === "") return;
+
+            const reviewContainer = document.createElement("div");
+            reviewContainer.classList.add("review");
+
+            const reviewContent = document.createElement("p");
+            reviewContent.textContent = reviewText;
+            reviewContainer.appendChild(reviewContent);
+
+            const deleteButton = document.createElement("button");
+            deleteButton.textContent = "Удалить";
+            deleteButton.onclick = () => {
+                reviewContainer.remove();
+            };
+            reviewContainer.appendChild(deleteButton);
+
+            document.getElementById("reviewsList").appendChild(reviewContainer);
+            document.getElementById("reviewText").value = "";
+        }
+    </script>
+</head>
+<body>
+    <header>
+        <h1>Отзывы - Кафе 3 Пескаря</h1>
+    </header>
+    <nav>
+        <a href="index.html">Главная</a>
+        <a href="about.html">О нас</a>
+        <a href="contact.html">Контакты</a>
+        <a href="menu.html">Меню</a>
+        <a href="reviews.html">Отзывы</a>
+    </nav>
+    <div class="container">
+        <h2>Оставьте ваш отзыв</h2>
+        <textarea id="reviewText" placeholder="Введите ваш отзыв здесь..." rows="4" cols="50"></textarea><br>
+        <button onclick="addReview()">Отправить отзыв</button>
+        <div id="reviewsList" class="reviews-list">
+            <!-- Здесь будут отображаться отзывы -->
+        </div>
+    </div>
+    <footer>
+        <p>&copy; 2024 Кафе 3 Пескаря</p>
+    </footer>
+</body>
+</html>
